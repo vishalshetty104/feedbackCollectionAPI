@@ -25,4 +25,8 @@ public class feedbackService {
         return savedFeedback.getId();
     }
 
+    public void deleteFeedback(Long id){
+        feedbackRepo.deleteById(id);
+    }
+
 }

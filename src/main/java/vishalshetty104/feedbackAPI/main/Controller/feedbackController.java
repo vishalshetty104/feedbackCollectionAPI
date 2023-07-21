@@ -39,4 +39,33 @@ public class feedbackController {
     public Optional<Feedback> getFeedbackById(@PathVariable Long id){
         return fbService.getById(id);
     }
+    @PutMapping("/api/feedback/{id}")
+    public ResponseEntity<String> editFeedback(@RequestBody Feedback UpdatedFeedback, @PathVariable Long id){
+        try {
+            Feedback existingFeedback = fbService.getById(id).orElse(null);
+            if (existingFeedback == null) {
+                return new ResponseEntity<>("Feedback not found with ID: " + id, HttpStatus.NOT_FOUND);
+            }
+            existingFeedback.setContent(UpdatedFeedback.getContent());
+            existingFeedback.setFeedbackType(UpdatedFeedback.getFeedbackType());
+            Long savedFeedback = fbService.saveFeedback(existingFeedback);
+            return new ResponseEntity<>("Feedback updated successfully with id: "+savedFeedback, HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>("Error occurred while updating feedback.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @DeleteMapping("/api/feedback/{id}")
+    public ResponseEntity<String> deleteFeedback(@PathVariable Long id){
+        try {
+            if(fbService.getById(id).isEmpty()){
+                return new ResponseEntity<>("Feedback not found with ID: " + id, HttpStatus.NOT_FOUND);
+            }
+            fbService.deleteFeedback(id);
+            return new ResponseEntity<>("Feedback deleted successfully with id: "+id, HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>("Error occurred while updating feedback.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
