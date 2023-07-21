@@ -6,16 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
-enum feedbackType {
-    POSITIVE("positive"), NEUTRAL("neutral"), NEGATIVE("negative");
-    private String feedbackCode;
-    private feedbackType(String feedbackCode){
-        this.feedbackCode = feedbackCode;
-    }
-    public String getFeedbackCode(){
-        return this.feedbackCode;
-    }
-}
+
 @Entity
 
 public class Feedback {
