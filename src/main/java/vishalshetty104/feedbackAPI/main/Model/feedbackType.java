@@ -1,12 +1,14 @@
 package vishalshetty104.feedbackAPI.main.Model;
 
 public enum feedbackType {
-    POSITIVE("positive"), NEUTRAL("neutral"), NEGATIVE("negative");
-    private String feedbackCode;
-    private feedbackType(String feedbackCode){
-        this.feedbackCode = feedbackCode;
+    POSITIVE, NEUTRAL, NEGATIVE;
+
+    public Boolean correctValue(){
+        return true;
     }
-    public String getFeedbackCode(){
-        return this.feedbackCode;
+
+    @Override
+    public String toString() {
+        return "feedbackType{}";
     }
 }

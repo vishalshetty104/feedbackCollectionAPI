@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import vishalshetty104.feedbackAPI.main.Model.Feedback;
 import vishalshetty104.feedbackAPI.main.Model.feedbackType;
 import vishalshetty104.feedbackAPI.main.Services.feedbackService;
-
+import org.apache.commons.lang3.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -43,7 +43,7 @@ public class feedbackController {
         }
     }
     @GetMapping("/api/feedback")
-    public List<Feedback> getAllFeedback(@RequestParam("type") feedbackType type){
+    public List<Feedback> getAllFeedback(@RequestParam(value = "type", required = false) feedbackType type){
         if(type==null){
             return fbService.getFeedback();
         }

@@ -1,5 +1,5 @@
 package vishalshetty104.feedbackAPI.main.Model;
-
+import vishalshetty104.feedbackAPI.main.Model.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +21,7 @@ public class Feedback {
 
     public Feedback(){}
 
-    public Feedback(String username, String content, vishalshetty104.feedbackAPI.main.Model.feedbackType feedbackType) {
+    public Feedback(String username, String content, feedbackType feedbackType) {
         this.username = username;
         this.content = content;
         this.feedbackType = feedbackType;
@@ -48,11 +48,11 @@ public class Feedback {
         this.content = content;
     }
 
-    public vishalshetty104.feedbackAPI.main.Model.feedbackType getFeedbackType() {
+    public feedbackType getFeedbackType() {
         return feedbackType;
     }
 
-    public void setFeedbackType(vishalshetty104.feedbackAPI.main.Model.feedbackType feedbackType) {
+    public void setFeedbackType(feedbackType feedbackType) {
         this.feedbackType = feedbackType;
     }
 }
